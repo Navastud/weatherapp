@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloud, faSun, faCloudRain, faSnowflake, faCloudMeatball, faWind } from '@fortawesome/free-solid-svg-icons'
-import { CLOUD, CLOUDY, SUN, RAIN, SNOW, WINDY } from '../constants/weathers'
+import { CLOUD, CLOUDY, SUN, RAIN, SNOW, WINDY } from './../../../constants/weathers'
 
 const stateToIconName = weatherState => {
     switch (weatherState) {
