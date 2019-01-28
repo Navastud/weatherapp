@@ -24,13 +24,15 @@ const stateToIconName = weatherState => {
 }
 
 const getWeatherIcon = (weatherState) => {
-    return <FontAwesomeIcon icon={stateToIconName(weatherState)} size="2x" />
+    return <FontAwesomeIcon className="wicon" icon={stateToIconName(weatherState)} size="4x" />
 }
 
 const WeatherTemperature = ({ temperature, weatherState }) => (
-    <div>
+    <div className="weatherTemperatureCont">
         {getWeatherIcon(weatherState)}
-        <span>{`${temperature} C°`}</span></div>
+        <span className="temperature">{`${temperature}`}</span>
+        <span className="temperaturetype">C°</span>
+    </div>
 )
 
 WeatherTemperature.propTypes = {

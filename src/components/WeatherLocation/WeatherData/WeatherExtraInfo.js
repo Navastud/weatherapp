@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.css'
 
-const WeatherExtraInfo = ({ humidity, wind }) => (<div>
-    <span>{`${humidity} % | `}</span>
-    <span>{`${wind} wind`}</span>
-</div>) //template string
+const WeatherExtraInfo = ({ humidity, wind }) => (
+    <div className="weatherExtraInfoCont">
+        <span>{`${humidity} % | `}</span>
+        <span>{`${wind} wind`}</span>
+    </div>) //template string
 
 WeatherExtraInfo.propTypes = {
     humidity: PropTypes.number.isRequired,
