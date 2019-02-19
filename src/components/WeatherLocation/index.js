@@ -26,7 +26,6 @@ class WeatherLocation extends Component {
         const data = transformWeather(weather_data);
         this.setState({ data });
       });
-    console.log("actualizado");
   };
 
   componentWillMount() {
@@ -35,7 +34,6 @@ class WeatherLocation extends Component {
 
   render = () => {
     const { city, data } = this.state;
-
     return (
       <div className="weatherLocationCont">
         <Location city={city} />
