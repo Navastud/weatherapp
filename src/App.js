@@ -13,11 +13,20 @@ import "./App.css";
 
 library.add(faCloud, faSun, faCloudRain, faSnowflake, faCloudMeatball, faWind);
 
+const cities = [
+  "Buenos Aires, ar",
+  "Santiago, cl",
+  "Bogotá, col",
+  "Washington DC., us",
+  "Ciudad de México, mx",
+  "Madrid, es"
+];
+
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <LocationList />
+        <LocationList cities={cities} />
       </div>
     );
   }
