@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-…or create a new repository on the command line
-echo "# weatherapp" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin git@github.com:Navastud/weatherapp.git
-git push -u origin master
-…or push an existing repository from the command line
-git remote add origin git@github.com:Navastud/weatherapp.git
-git push -u origin master
-=======
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
