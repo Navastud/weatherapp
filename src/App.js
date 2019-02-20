@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LocationList from "./components/LocationList";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { Grid, Row, Col } from "react-flexbox-grid";
 import {
   faCloud,
   faSun,
@@ -23,11 +24,26 @@ const cities = [
 ];
 
 class App extends Component {
+  handlerSelectedLocation = city => {
+    console.log("handlerSelectionLocation");
+  };
+
   render() {
     return (
-      <div className="App">
-        <LocationList cities={cities} />
-      </div>
+      <Grid>
+        <Row>Titulo</Row>
+        <Row>
+          <Col xs={12} md={6}>
+            <LocationList
+              cities={cities}
+              onSelectedLocation={this.handlerSelectedLocation}
+            />
+          </Col>
+          <Col xs={12} md={6}>
+            <div className="detail">Detail</div>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }
