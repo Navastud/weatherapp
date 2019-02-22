@@ -3,9 +3,9 @@ import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import LocationList from "./components/LocationList";
+import ForecastExtended from "./components/ForecastExtended";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { Grid, Row, Col } from "react-flexbox-grid";
 
@@ -31,11 +31,17 @@ const cities = [
 ];
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = { city: null };
+  }
+
   handlerSelectedLocation = city => {
-    console.log("handlerSelectionLocation");
+    this.setState({ city });
   };
 
   render() {
+    const { city } = this.state;
     return (
       <Grid>
         <Row>
@@ -58,8 +64,10 @@ class App extends Component {
             />
           </Col>
           <Col xs={12} md={6}>
-            <Paper zDepth={4}>
-              <div className="detail">Detail</div>
+            <Paper>
+              <div className="detail">
+                {city && <ForecastExtended city={city} />}
+              </div>
             </Paper>
           </Col>
         </Row>
