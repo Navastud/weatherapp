@@ -1,4 +1,4 @@
-import moment, { weekdays } from "moment";
+import moment from "moment";
 import "moment/locale/es";
 import transformWeather from "./transformWeather";
 
