@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { createStore } from "redux";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -8,7 +9,6 @@ import LocationList from "./components/LocationList";
 import ForecastExtended from "./components/ForecastExtended";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { Grid, Row, Col } from "react-flexbox-grid";
-
 import {
   faCloud,
   faSun,
@@ -17,6 +17,7 @@ import {
   faCloudMeatball,
   faWind
 } from "@fortawesome/free-solid-svg-icons";
+import { setCity } from "./actions";
 import "./App.css";
 
 library.add(faCloud, faSun, faCloudRain, faSnowflake, faCloudMeatball, faWind);
@@ -30,6 +31,9 @@ const cities = [
   "Madrid, es"
 ];
 
+const store = createStore(() => {},
+window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 class App extends Component {
   constructor() {
     super();
@@ -38,6 +42,7 @@ class App extends Component {
 
   handlerSelectedLocation = city => {
     this.setState({ city });
+    store.dispatch(setCity(city));
   };
 
   render() {
