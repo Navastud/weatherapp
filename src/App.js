@@ -9,6 +9,7 @@ import LocationList from "./components/LocationList";
 import ForecastExtended from "./components/ForecastExtended";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { Grid, Row, Col } from "react-flexbox-grid";
+import PropTypes from "prop-types";
 import {
   faCloud,
   faSun,
@@ -78,13 +79,15 @@ class App extends Component {
   }
 }
 
-const mapDispatchToActions = dispatch => ({
+App.propTypes = {
+  setCity: PropTypes.func.isRequired
+};
+
+const mapDispatchToProps = dispatch => ({
   setCity: value => dispatch(setCity(value))
 });
 
-const AppConnected = connect(
+export default connect(
   null,
-  mapDispatchToActions
+  mapDispatchToProps
 )(App);
-
-export default AppConnected;
