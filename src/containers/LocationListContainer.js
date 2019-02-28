@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import LocationList from "./../components/LocationList";
-import { setCity } from "./actions";
+import { setCity } from "./../actions/";
 
 class LocationListContainer extends Component {
   handlerSelectedLocation = city => {
