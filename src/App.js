@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import LocationList from "./components/LocationList";
+import LocationListContainer from "./containers/LocationListContainer";
 import ForecastExtended from "./components/ForecastExtended";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import PropTypes from "prop-types";
 import {
   faCloud,
   faSun,
@@ -18,7 +16,6 @@ import {
   faCloudMeatball,
   faWind
 } from "@fortawesome/free-solid-svg-icons";
-import { setCity } from "./actions";
 import "./App.css";
 
 library.add(faCloud, faSun, faCloudRain, faSnowflake, faCloudMeatball, faWind);
@@ -38,11 +35,6 @@ class App extends Component {
     this.state = { city: null };
   }
 
-  handlerSelectedLocation = city => {
-    this.setState({ city });
-    this.props.setCity(city);
-  };
-
   render() {
     const { city } = this.state;
     return (
@@ -61,10 +53,7 @@ class App extends Component {
         </Row>
         <Row>
           <Col xs={12} md={6}>
-            <LocationList
-              cities={cities}
-              onSelectedLocation={this.handlerSelectedLocation}
-            />
+            <LocationListContainer cities={cities} />
           </Col>
           <Col xs={12} md={6}>
             <Paper>
@@ -79,15 +68,4 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  setCity: PropTypes.func.isRequired
-};
-
-const mapDispatchToProps = dispatch => ({
-  setCity: value => dispatch(setCity(value))
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(App);
+export default App;
