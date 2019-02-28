@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -17,7 +18,6 @@ import {
   faWind
 } from "@fortawesome/free-solid-svg-icons";
 import { setCity } from "./actions";
-import { store } from "./store";
 import "./App.css";
 
 library.add(faCloud, faSun, faCloudRain, faSnowflake, faCloudMeatball, faWind);
@@ -39,7 +39,7 @@ class App extends Component {
 
   handlerSelectedLocation = city => {
     this.setState({ city });
-    store.dispatch(setCity(city));
+    this.props.setCity(city);
   };
 
   render() {
@@ -78,4 +78,13 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToActions = dispatch => ({
+  setCity: value => dispatch(setCity(value))
+});
+
+const AppConnected = connect(
+  null,
+  mapDispatchToActions
+)(App);
+
+export default AppConnected;
