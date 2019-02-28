@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { createStore } from "redux";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -18,6 +17,7 @@ import {
   faWind
 } from "@fortawesome/free-solid-svg-icons";
 import { setCity } from "./actions";
+import { store } from "./store";
 import "./App.css";
 
 library.add(faCloud, faSun, faCloudRain, faSnowflake, faCloudMeatball, faWind);
@@ -30,9 +30,6 @@ const cities = [
   "Ciudad de México, mx",
   "Madrid, es"
 ];
-
-const store = createStore(() => {},
-window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 class App extends Component {
   constructor() {
