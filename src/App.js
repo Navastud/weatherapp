@@ -5,7 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import LocationListContainer from "./containers/LocationListContainer";
-import ForecastExtended from "./components/ForecastExtended";
+import ForecastExtendedContainer from "./containers/ForecastExtendedContainer";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import {
@@ -30,13 +30,7 @@ const cities = [
 ];
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = { city: null };
-  }
-
   render() {
-    const { city } = this.state;
     return (
       <Grid>
         <Row>
@@ -58,7 +52,7 @@ class App extends Component {
           <Col xs={12} md={6}>
             <Paper>
               <div className="detail">
-                {city && <ForecastExtended city={city} />}
+                <ForecastExtendedContainer />
               </div>
             </Paper>
           </Col>
