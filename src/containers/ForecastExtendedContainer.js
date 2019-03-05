@@ -10,7 +10,7 @@ class ForecastExtendedContainer extends Component {
 }
 
 ForecastExtendedContainer.propTypes = {
-  city: PropTypes.string.isRequired0
+  city: PropTypes.string.isRequired
 };
 
 const mapToStateProps = ({ city }) => ({ city });
