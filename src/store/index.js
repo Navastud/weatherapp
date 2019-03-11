@@ -8,8 +8,6 @@ const initialState = {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-console.log("reducers:", reducers);
-
 export const store = createStore(
   reducers,
   initialState,
