@@ -1,8 +1,11 @@
 import transformForecast from "./../services/transformForecast";
+import transformWeather from "./../services/transformWeather";
 
 export const SET_CITY = "SET_CITY";
 export const SET_FORECAST_DATA = "SET_FORECAST_DATA";
 export const SET_WEATHER = "SET_WEATHER";
+export const GET_WEATHER_CITY = "GET_WEATHER_CITY";
+export const SET_WEATHER_CITY = "SET_WEATHER_CITY";
 
 export const setCity = payload => ({ type: SET_CITY, payload });
 export const setForecastData = payload => ({
@@ -10,8 +13,12 @@ export const setForecastData = payload => ({
   payload
 });
 
+const getWeatherCity = payload => ({ type: GET_WEATHER_CITY, payload });
+const setWeatherCity = payload => ({ type: SET_WEATHER_CITY, payload });
+
 const api_key = "d849795d81f8be2ac7109436ff202f0b";
 const url = "http://api.openweathermap.org/data/2.5/forecast";
+const url_weather = "http://api.openweathermap.org/data/2.5/weather";
 
 export const setSelectedCity = payload => {
   return dispatch => {
@@ -34,23 +41,19 @@ export const setSelectedCity = payload => {
 };
 
 export const setWeather = payload => {
-  /*  const api_key = "d849795d81f8be2ac7109436ff202f0b";
-  const url = "http://api.openweathermap.org/data/2.5/weather";
-  
-  handleUpdateClick = () => {
-    const { city } = this.state;
-    const api_weather = `${url}?q=${city}&APPID=${api_key}`;
-    fetch(api_weather)
-      .then(data => {
-        return data.json();
-      })
-      .then(weather_data => {
-        const data = transformWeather(weather_data);
-        this.setState({ data });
-      });
+  return dispatch => {
+    payload.forEach(city => {
+      dispatch(getWeatherCity(city));
+
+      const api_weather = `${url_weather}?q=${city}&APPID=${api_key}`;
+      fetch(api_weather)
+        .then(data => {
+          return data.json();
+        })
+        .then(weather_data => {
+          const data = transformWeather(weather_data);
+          dispatch(setWeatherCity({ city, data }));
+        });
+    });
   };
-  
-  componentWillMount() {
-    this.handleUpdateClick();
-  } */
 };
