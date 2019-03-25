@@ -26,6 +26,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -44,4 +45,48 @@
   .detail {
     height: 40vh;
   }
+}
+
+html {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+#root,
+#layout-side {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  flex-grow: 2;
+}
+
+#layout-body {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  flex-grow: 2;
+}
+
+#layout-body header {
+  background-color: #fff;
+  padding-left: 20px;
+  flex: 0 0 auto;
+}
+
+#layout-body main {
+  flex: 1 0 auto;
+  margin: 24px 16px;
+  padding: 24px;
+  background-color: #fff;
+  min-height: 280px;
+}
+
+#layout-body footer {
+  flex: 0 0 auto;
 }

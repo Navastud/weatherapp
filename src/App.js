@@ -1,24 +1,11 @@
 import React, { Component } from "react";
 import Paper from "@material-ui/core/Paper";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
+import { Layout, Menu, Icon } from "antd";
+import { Grid, Row, Col } from "react-flexbox-grid";
 import LocationListContainer from "./containers/LocationListContainer";
 import ForecastExtendedContainer from "./containers/ForecastExtendedContainer";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { Grid, Row, Col } from "react-flexbox-grid";
-import {
-  faCloud,
-  faSun,
-  faCloudRain,
-  faSnowflake,
-  faCloudMeatball,
-  faWind
-} from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
-
-library.add(faCloud, faSun, faCloudRain, faSnowflake, faCloudMeatball, faWind);
+const { Header, Sider, Content, Footer } = Layout;
 
 const cities = [
   "Buenos Aires, ar",
@@ -30,36 +17,60 @@ const cities = [
 ];
 
 class App extends Component {
+  state = {
+    collapsed: false
+  };
+
+  toggle = () => {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  };
+
   render() {
     return (
-      <Grid>
-        <Row>
-          <Col xs={12}>
-            <AppBar color="primary" position="sticky">
-              <Toolbar>
-                <IconButton color="inherit" aria-label="Menu" />
-                <Typography variant="h6" color="inherit">
-                  Weather App
-                </Typography>
-              </Toolbar>
-            </AppBar>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12} md={6}>
-            <LocationListContainer cities={cities} />
-          </Col>
-          <Col xs={12} md={6}>
-            <Paper>
-              <div className="detail">
-                <ForecastExtendedContainer />
-              </div>
-            </Paper>
-          </Col>
-        </Row>
-      </Grid>
+      <Layout id="layout-side">
+        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+          <div className="logo" />
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+            <Menu.Item key="1">
+              <Icon type="user" />
+              <span>Perfil</span>
+            </Menu.Item>
+            <Menu.Item key="2">
+              <Icon type="cloud" />
+              <span>Clima</span>
+            </Menu.Item>
+          </Menu>
+        </Sider>
+        <Layout id="layout-body">
+          <Header>
+            <Icon
+              className="trigger"
+              type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+              onClick={this.toggle}
+            />
+          </Header>
+          <Content>
+            <Grid>
+              <Row>
+                <Col xs={12} md={6}>
+                  <LocationListContainer cities={cities} />
+                </Col>
+                <Col xs={12} md={6}>
+                  <Paper>
+                    <div className="detail">
+                      <ForecastExtendedContainer />
+                    </div>
+                  </Paper>
+                </Col>
+              </Row>
+            </Grid>
+          </Content>
+          <Footer>Footer</Footer>
+        </Layout>
+      </Layout>
     );
   }
 }
-
 export default App;
