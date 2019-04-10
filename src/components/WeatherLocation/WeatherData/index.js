@@ -1,20 +1,20 @@
 import React from "react";
+import { Card } from "antd";
 import PropTypes from "prop-types";
 import WeatherTemperature from "./WeatherTemperature";
 import WeatherExtraInfo from "./WeatherExtraInfo";
-import "./styles.css";
 
 const WeatherData = ({ data }) => {
   const { temperature, weatherState, humidity, wind } = data;
 
   return (
-    <div className="weatherDataCont">
+    <Card>
       <WeatherTemperature
         temperature={temperature}
         weatherState={weatherState}
       />
       <WeatherExtraInfo humidity={humidity} wind={wind} />
-    </div>
+    </Card>
   );
 };
 

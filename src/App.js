@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import Paper from "@material-ui/core/Paper";
-import { Layout, Menu, Icon } from "antd";
-import { Grid, Row, Col } from "react-flexbox-grid";
+import { Layout, Menu, Icon, Row, Col } from "antd";
 import LocationListContainer from "./containers/LocationListContainer";
 import ForecastExtendedContainer from "./containers/ForecastExtendedContainer";
 import "./App.css";
@@ -18,7 +16,7 @@ const cities = [
 
 class App extends Component {
   state = {
-    collapsed: false
+    collapsed: true
   };
 
   toggle = () => {
@@ -52,20 +50,14 @@ class App extends Component {
             />
           </Header>
           <Content>
-            <Grid>
-              <Row>
-                <Col xs={12} md={6}>
-                  <LocationListContainer cities={cities} />
-                </Col>
-                <Col xs={12} md={6}>
-                  <Paper>
-                    <div className="detail">
-                      <ForecastExtendedContainer />
-                    </div>
-                  </Paper>
-                </Col>
-              </Row>
-            </Grid>
+            <Row gutter={16}>
+              <Col span={12}>
+                <LocationListContainer cities={cities} />
+              </Col>
+              <Col span={12}>
+                <ForecastExtendedContainer />
+              </Col>
+            </Row>
           </Content>
           <Footer>Footer</Footer>
         </Layout>

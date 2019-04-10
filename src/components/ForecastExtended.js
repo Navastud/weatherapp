@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ForecastItem from "./ForecasItem";
-import "./styles.css";
 
 const renderForecastItemDays = forecastData => {
   return forecastData.map(forecast => (
